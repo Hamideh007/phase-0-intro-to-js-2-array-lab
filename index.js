@@ -1,30 +1,35 @@
-// Write your solution here!
 const cats = ["Milo", "Otis", "Garfield"];
+
 function destructivelyAppendCat(name){
-    cats.push("Ralph");
+    cats.push(name); // use the name argument instead of a hardcoded value
 }
+
 function destructivelyPrependCat(name){
-    cats.unshift("Bob");
+    cats.unshift(name);
 }
-function destructivelyRemoveLastCat(name){
-    cats.pop();
+
+function destructivelyRemoveLastCat(){
+    cats.pop(); // don't need a name argument
 }
-function destructivelyRemoveFirstCat(name){
-    cats.shift();
+
+function destructivelyRemoveFirstCat(){
+    cats.shift(); // don't need a name argument
 }
+
 function appendCat(name){
-    return [...cats, name]
+    return [...cats, name]; // use spread operator to create new array with appended value
 }
-beforeEach();
+
 function prependCat(name){
-    return [name, ...cats];
+    return [name, ...cats]; // use spread operator to create new array with prepended value
 }
-beforeEach();
-function removeLastCat(name){
-return cats.slice(0, length- 1 );
+
+function removeLastCat(){
+    return cats.slice(0, -1); // use slice to create new array with last element removed
 }
-beforeEach();
-function removeFirstCat(name){
-    return cats.slice(1)
+
+function removeFirstCat(){
+    return cats.slice(1); // use slice to create new array with first element removed
 }
-beforeEach(); 
+
+

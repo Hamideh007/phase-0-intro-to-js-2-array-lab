@@ -9,10 +9,11 @@ describe('index.js', function () {
 
   describe('Array functions', function () {
     beforeEach(function () {
-      cats.length = 0;
-
-      cats.push('Milo', 'Otis', 'Garfield');
-    });
+      const originalCats = ["Milo", "Otis", "Garfield"];
+      cats.length = 0; // Set the length to 0 to clear the array
+      cats.push(...originalCats); // Push the original elements back into the array
+    });    
+    
 
     describe('destructivelyAppendCat(name)', function () {
       it('appends a cat to the end of the cats array', function () {
@@ -53,6 +54,18 @@ describe('index.js', function () {
         expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
       });
     });
+    it("destructivelyAppendCat(name) adds a cat to the end of the cats array", function () {
+      destructivelyAppendCat("Rufus");
+      expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield", "Rufus"]);
+      cats.pop(); // Remove the last cat added to the array
+    });
+    
+    describe("destructivelyRemoveFirstCat()", function () {
+      it("removes the first cat from the cats array", function () {
+        destructivelyRemoveFirstCat();
+        expect(cats).to.have.ordered.members(["Otis", "Garfield"]);
+      });
+    });    
 
     describe('prependCat(name)', function () {
       it('prepends a cat to the cats array and returns a new array, leaving the cats array unchanged', function () {
